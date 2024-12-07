@@ -9,7 +9,7 @@ public abstract class Search {
      * search. Return -1 if target is not found in arr.
      */
     abstract public int find(int[] arr, int target);
-
+        
     /**
      * Recursively find the index of the target element in the sorted array arr
      * using binary. Return -1 if target is not found in arr.
