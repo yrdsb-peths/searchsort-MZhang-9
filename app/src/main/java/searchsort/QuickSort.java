@@ -17,12 +17,10 @@ public class QuickSort extends Sort {
      */
     private void quickSort(int[] arr, int low, int high) {
         if (low < high) {
-            // Partition the array and get the pivot index
             int pivotIndex = partition(arr, low, high);
             
-            // Recursively sort the subarrays
-            quickSort(arr, low, pivotIndex - 1); // Left subarray
-            quickSort(arr, pivotIndex + 1, high); // Right subarray
+            quickSort(arr, low, pivotIndex - 1); 
+            quickSort(arr, pivotIndex + 1, high); 
         }
     }
 
@@ -31,15 +29,13 @@ public class QuickSort extends Sort {
      * Return the index of the pivot element after partition.
      */
     private int partition(int[] arr, int low, int high) {
-        int pivot = arr[high]; // Choose the last element as pivot
-        int i = low - 1; // Index for smaller element
+        int pivot = arr[high]; 
+        int i = low - 1; 
 
         for (int j = low; j < high; j++) {
-            // If current element is smaller than or equal to the pivot
             if (arr[j] <= pivot) {
-                i++; // Increment the index for smaller element
+                i++; 
 
-                // Swap arr[i] and arr[j]
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
