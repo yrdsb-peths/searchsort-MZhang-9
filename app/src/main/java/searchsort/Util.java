@@ -21,10 +21,13 @@ public class Util {
      * @return The shuffled array.
      */
     public static int[] shuffle(int[] arr, Long seed) {
-        // Initialize a Random object with the given seed if provided
         Random random = (seed != null) ? new Random(seed) : new Random();
-        // Note: This generates a random number between 0 and 5:
-        // int randomNum = random.nextInt(6);
+
+        // Fisher-Yates shuffle algorithm
+        for (int i = arr.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1); // Random index from 0 to i
+            exch(arr, i, j); // Swap elements
+        }
 
         return arr;
     }
@@ -33,25 +36,37 @@ public class Util {
      * Exchange the elements at indices i and j in the array arr.
      */
     public static void exch(int[] arr, int i, int j) {
-
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     /**
      * Generate a random array of size n where each element is between 0 and n-1.
      */
     public static int[] generateRandomArray(int n, Long seed) {
-        // Create a new integer array of size n
+        int[] arr = new int[n];
 
-        // Shuffle the array using the Shuffle method with the given seed
+        Random random = (seed != null) ? new Random(seed) : new Random();
 
-        // Return the shuffled array
-        return new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = random.nextInt(n); // Random number between 0 and n-1
+        }
+
+        shuffle(arr, seed);
+
+        return arr;
     }
 
     /**
      * Check if the array arr is sorted in ascending order.
      */
     public static boolean isSorted(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
         return true;
     }
 }

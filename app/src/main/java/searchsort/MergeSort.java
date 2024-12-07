@@ -1,6 +1,10 @@
 package searchsort;
+import java.util.Arrays;
 
 public class MergeSort extends Sort {
+    
+
+
     /**
      * Sort the array arr using merge sort algorithm.
      */
